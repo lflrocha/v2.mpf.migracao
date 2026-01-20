@@ -5,6 +5,7 @@ from PIL import Image as PILImage
 from urllib.parse import urljoin, urlparse
 import re
 from bs4 import BeautifulSoup
+from typing import Optional
 
 from config import AUTH, HEADERS
 from utils import (
@@ -33,7 +34,7 @@ def image_size_from_bytes(data: bytes):
     except Exception:
         return (None, None)
 
-def pick_scale_for_max_side(max_side: int | None) -> str:
+def pick_scale_for_max_side(max_side: Optional[int]) -> str:
     if not max_side:
         return "preview"
     # maior scale cujo limite <= max_side
