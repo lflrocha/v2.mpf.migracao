@@ -1,6 +1,6 @@
 # ====== DESTINO ======
-PLONE_URL = "http://170.187.151.174:8080/mpf2026"
-CONTAINER_PATH = "/noticias"
+PLONE_URL = "https://www-cdn.mpf.mp.br/"
+CONTAINER_PATH = "/comunicacao/noticias"
 API_BASE = f"{PLONE_URL.rstrip('/')}/{CONTAINER_PATH.lstrip('/')}"
 
 USERNAME = "admin"

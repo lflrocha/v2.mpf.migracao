@@ -1,0 +1,8 @@
+tipo;url_origem;url_destino
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/institucional/atuacao-do-mp-eleitoral-1;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/institucional/atuacao-do-mp-eleitoral-1
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/institucional/estrutura-do-mpe;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/institucional/estrutura-do-mpe
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/institucional/procurador-regional-eleitoral-1;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/institucional/procurador-regional-eleitoral-1
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/institucional/sobre-o-mp-eleitoral;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/institucional/sobre-o-mp-eleitoral
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/banners;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/banners
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/institucional;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/institucional
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prepb/noticias;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-pb/noticias

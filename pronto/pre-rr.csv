@@ -1,0 +1,5 @@
+tipo;url_origem;url_destino
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prerr/institucional/composicao;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rr/institucional/composicao
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prerr/banners;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rr/banners
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prerr/institucional;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rr/institucional
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prerr/noticias;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rr/noticias

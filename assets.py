@@ -130,7 +130,7 @@ def create_dx_image(session, parent_url: str, filename: str, data_bytes: bytes, 
         },
     }
 
-    r = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload)
+    r = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload, verify=False)
     if r.status_code in (200, 201):
         return r.json().get("@id")
 
@@ -138,7 +138,7 @@ def create_dx_image(session, parent_url: str, filename: str, data_bytes: bytes, 
     if r.status_code == 400 and "already in use" in (r.text or ""):
         for i in range(2, 10):
             payload["id"] = f"{image_id}-v{i}"
-            rr = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload)
+            rr = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload, verify=False)
             if rr.status_code in (200, 201):
                 return rr.json().get("@id")
 
@@ -161,14 +161,14 @@ def create_dx_file(session, parent_url: str, filename: str, data_bytes: bytes, s
         },
     }
 
-    r = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload)
+    r = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload, verify=False)
     if r.status_code in (200, 201):
         return r.json().get("@id")
 
     if r.status_code == 400 and "already in use" in (r.text or ""):
         for i in range(2, 10):
             payload["id"] = f"{file_id}-v{i}"
-            rr = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload)
+            rr = session.post(parent_url, headers=HEADERS, auth=AUTH, json=payload, verify=False)
             if rr.status_code in (200, 201):
                 return rr.json().get("@id")
 
@@ -183,7 +183,7 @@ def patch_news_text(session, news_url: str, new_html: str):
             "encoding": "utf-8",
         }
     }
-    r = session.patch(news_url, headers=HEADERS, auth=AUTH, json=payload)
+    r = session.patch(news_url, headers=HEADERS, auth=AUTH, json=payload, verify=False)
     if r.status_code not in (200, 204):
         raise Exception(f"Erro dando PATCH no text: {r.status_code} {r.reason}\n{r.text}")
 

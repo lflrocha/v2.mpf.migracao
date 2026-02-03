@@ -3,20 +3,46 @@ import unicodedata
 import requests
 
 # ====== CONFIG (AJUSTADO) ======
-CONTAINER_URL = "http://svlh-plnptall01.pgr.mpf.mp.br:8401/mpf2026/comunicacao/grandes-casos"
+CONTAINER_URL = "http://svlh-plnptall01.pgr.mpf.mp.br:8401/mpf2026/o-mpf/unidades"
 
 USERNAME = "lflrocha"   # ajuste
 PASSWORD = "bl@ckb!rd"   # ajuste
 
 TITLES = [
-"Caso Fundef",
-"Caso Samarco",
-"Atos Antidemocráticos",
-"Caso Pinheiro/Braskem",
-"Caso Potássio",
-"ACP do Carvão",
-"Preservação da Baía Babitonga",
-
+"Procuradoria-Geral da República (PGR)",
+"Procuradoria Regional da República da 1ª Região (PRR1)",
+"Procuradoria Regional da República da 2ª Região (PRR2)",
+"Procuradoria Regional da República da 3ª Região (PRR3)",
+"Procuradoria Regional da República da 4ª Região (PRR4)",
+"Procuradoria Regional da República da 5ª Região (PRR5)",
+"Procuradoria Regional da República da 6ª Região (PRR6)",
+"Procuradoria da República em Alagoas",
+"Procuradoria da República em Goiás",
+"Procuradoria da República em Mato Grosso",
+"Procuradoria da República em Mato Grosso do Sul",
+"Procuradoria da República em Minas Gerais",
+"Procuradoria da República em Pernambuco",
+"Procuradoria da República em Rondônia",
+"Procuradoria da República em Roraima",
+"Procuradoria da República em Santa Catarina",
+"Procuradoria da República em São Paulo",
+"Procuradoria da República em Sergipe",
+"Procuradoria da República na Bahia",
+"Procuradoria da República na Paraíba",
+"Procuradoria da República no Acre",
+"Procuradoria da República no Amapá",
+"Procuradoria da República no Amazonas",
+"Procuradoria da República no Ceará",
+"Procuradoria da República no Distrito Federal",
+"Procuradoria da República no Espírito Santo",
+"Procuradoria da República no Maranhão",
+"Procuradoria da República no Pará",
+"Procuradoria da República no Paraná",
+"Procuradoria da República no Piauí",
+"Procuradoria da República no Rio de Janeiro",
+"Procuradoria da República no Rio Grande do Norte",
+"Procuradoria da República no Rio Grande do Sul",
+"Procuradoria da República no Tocantins",
 ]
 # ===============================
 
@@ -33,7 +59,7 @@ def create_folder(session: requests.Session, container_url: str, title: str) -> 
     folder_id = slugify(title)
 
     payload = {
-        "@type": "Folder",
+        "@type": "unidade",
         "id": folder_id,
         "title": title,
     }

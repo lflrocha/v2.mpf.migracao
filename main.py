@@ -73,6 +73,7 @@ def main():
                 classificacao = meta.get("classificacaoNoticia", "")
                 temas_txt = [t.strip() for t in classificacao.split("#;#") if t.strip()]
                 temas = [TEMA_PARA_ID[t] for t in temas_txt if t in TEMA_PARA_ID]
+                temas = temas[0]
 
                 subjects_raw = meta.get("subjects", "")
                 subjects = [x.strip() for x in subjects_raw.split("#;#") if x.strip()]

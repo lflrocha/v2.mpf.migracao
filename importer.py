@@ -5,6 +5,9 @@ import requests
 from config import API_BASE, AUTH, HEADERS
 from utils import guess_mime
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 def unidade_from_caminho(caminho: str) -> str:
     unidade = (caminho or "").split("/")[2]
@@ -16,7 +19,7 @@ def unidade_from_caminho(caminho: str) -> str:
     return unidade
 
 def publish_item(session, item_url: str):
-    r = session.post(f"{item_url.rstrip('/')}/@workflow/publish", headers=HEADERS, auth=AUTH)
+    r = session.post(f"{item_url.rstrip('/')}/@workflow/publish", headers=HEADERS, auth=AUTH, verify=False)
     if r.status_code not in (200, 204):
         raise Exception(f"Erro publicando: {r.status_code} {r.reason}\n{r.text}")
 
@@ -25,15 +28,15 @@ def publish_item(session, item_url: str):
 def ensure_year_folder(session: requests.Session, year: str) -> str:
     container = f"{API_BASE.rstrip('/')}/{year}"
 
-    r = session.get(container, headers=HEADERS, auth=AUTH)
+    r = session.get(container, headers=HEADERS, auth=AUTH, verify=False)
     if r.status_code == 200:
         return container
 
     payload = {"@type": "Folder", "id": year, "title": year}
-    rc = session.post(API_BASE, headers=HEADERS, auth=AUTH, json=payload)
+    rc = session.post(API_BASE, headers=HEADERS, auth=AUTH, json=payload, verify=False)
     if rc.status_code not in (200, 201):
         raise Exception(f"Erro criando pasta {year}: {rc.status_code} {rc.reason}\n{rc.text}")
-    
+
     return container
 
 
@@ -44,9 +47,9 @@ def create_news_item(session: requests.Session, container_url: str, item: dict) 
         "description": item.get("description", ""),
         "tituloAlternativo": item.get("tituloAlternativo", ""),
         "descricaoAlternativa": item.get("descricaoAlternativa", ""),
-        "temas": item.get("temas", []),
+        "tema": item.get("temas", []),
         "unidadeOrigem": item.get("unidadeOrigem", ""),
-        "subjects": item.get("subjects", []),
+        "subjects": item.get("Subjects", []),
         "effective": item.get("effective"),  # opcional (se o seu tipo aceita)
         "text": {
             "data": item.get("text_html", ""),
@@ -64,7 +67,7 @@ def create_news_item(session: requests.Session, container_url: str, item: dict) 
             "encoding": "base64",
         }
 
-    r = session.post(container_url, headers=HEADERS, auth=AUTH, json=payload)
+    r = session.post(container_url, headers=HEADERS, auth=AUTH, json=payload, verify=False)
     if r.status_code not in (200, 201):
         raise Exception(f"Erro criando noticia: {r.status_code} {r.reason}\n{r.text}")
     return r.json()

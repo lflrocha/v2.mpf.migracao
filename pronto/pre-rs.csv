@@ -1,0 +1,13 @@
+tipo;url_origem;url_destino
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/composicao-1/composicao;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/composicao-1/composicao
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/historico-1/historico;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/historico-1/historico
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/sobre/procuradoria-regional-eleitoral;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/sobre/procuradoria-regional-eleitoral
+File;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/documentos/copy_of_promotores_eleitorais.pdf;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/documentos/copy_of_promotores_eleitorais.pdf
+File;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/composicao-1/lista%20de%20promotores%20eleitorais%2020-08-2018.ods;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/composicao-1/lista de promotores eleitorais 20-08-2018.ods
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/banners;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/banners
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/documentos;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/documentos
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/composicao-1;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/composicao-1
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/historico-1;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/historico-1
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/institucional/sobre;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/institucional/sobre
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prers/noticias;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-rs/noticias

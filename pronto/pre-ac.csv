@@ -1,0 +1,11 @@
+tipo;url_origem;url_destino
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/conheca-a-pre-ac/conheca-o-ministerio-publico-eleitoral;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/conheca-a-pre-ac/conheca-o-ministerio-publico-eleitoral
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/conheca-a-pre-ac/procuradores-regionais-eleitorais;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/conheca-a-pre-ac/procuradores-regionais-eleitorais
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/conheca-a-pre-ac/sobre-crimes-eleitorais;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/conheca-a-pre-ac/sobre-crimes-eleitorais
+Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/conheca-a-pre-ac/zonas-e-promotores-eleitorais-no-acre;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/conheca-a-pre-ac/zonas-e-promotores-eleitorais-no-acre
+File;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/noticias/documentos-pre/orientacao-normativa-cotas-de-genero;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/noticias/documentos-pre/orientacao-normativa-cotas-de-genero
+File;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/portarias-do-pre/plantao-pre-ac-eleicoes-2022;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/portarias-do-pre/plantao-pre-ac-eleicoes-2022
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/banners;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/banners
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/conheca-a-pre-ac;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/conheca-a-pre-ac
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/noticias;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/noticias
+Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/preac/portarias-do-pre;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-ac/portarias-do-pre
