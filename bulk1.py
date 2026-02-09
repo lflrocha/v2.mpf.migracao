@@ -23,7 +23,7 @@ ORIG_PASS = os.getenv("PLONE_ORIG_PASS", "")
 
 # Destino (com restapi)
 DEST_USER = os.getenv("PLONE_DEST_USER", "admin")
-DEST_PASS = os.getenv("PLONE_DEST_PASS", "zope")
+DEST_PASS = os.getenv("PLONE_DEST_PASS", "Q7!mR2@x#9Lp")
 
 TIMEOUT = int(os.getenv("PLONE_TIMEOUT", "60"))
 SLEEP_BETWEEN = float(os.getenv("PLONE_SLEEP_BETWEEN", "0.05"))
@@ -39,7 +39,7 @@ ORIG_METHOD_BODY = os.getenv("PLONE_ORIG_METHOD_BODY", "v2_getDocumentosCorpo")
 ORIG_METHOD_META = os.getenv("PLONE_ORIG_METHOD_META", "v2_getDocumentosMetadados")
 
 # Root do DESTINO (use exatamente como você acessa no browser)
-DEST_ROOT_URL = os.getenv("PLONE_DEST_ROOT_URL", "https://www-cdn.mpf.mp.br/o-mpf/unidades/pr-pe/transparencia/")
+DEST_ROOT_URL = os.getenv("PLONE_DEST_ROOT_URL", "https://www-cdn.mpf.mp.br/atuacao/")
 
 # SSL / Certificados:
 # - PLONE_SSL_VERIFY=0|false|no  -> ignora certificado

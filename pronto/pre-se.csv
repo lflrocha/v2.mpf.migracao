@@ -1,7 +1,0 @@
-tipo;url_origem;url_destino
-Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prese/faca-sua-denuncia;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-se/faca-sua-denuncia
-Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prese/institucional/procuradoria-regional-eleitoral;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-se/institucional/procuradoria-regional-eleitoral
-Document;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prese/institucional/sobre-o-mpe;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-se/institucional/sobre-o-mpe
-Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prese/banners;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-se/banners
-Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prese/institucional;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-se/institucional
-Folder;http://svlp-plnptapp01.pgr.mpf.mp.br:8401/portal/prese/noticias;https://www-cdn.mpf.mp.br/atuacao/eleitoral/pre-se/noticias
