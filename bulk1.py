@@ -39,7 +39,7 @@ ORIG_METHOD_BODY = os.getenv("PLONE_ORIG_METHOD_BODY", "v2_getDocumentosCorpo")
 ORIG_METHOD_META = os.getenv("PLONE_ORIG_METHOD_META", "v2_getDocumentosMetadados")
 
 # Root do DESTINO (use exatamente como você acessa no browser)
-DEST_ROOT_URL = os.getenv("PLONE_DEST_ROOT_URL", "https://www-cdn.mpf.mp.br/atuacao/")
+DEST_ROOT_URL = os.getenv("PLONE_DEST_ROOT_URL", "https://www-cdn.mpf.mp.br/o-mpf/unidades/")
 
 # SSL / Certificados:
 # - PLONE_SSL_VERIFY=0|false|no  -> ignora certificado
