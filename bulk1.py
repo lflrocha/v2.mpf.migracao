@@ -124,16 +124,39 @@ def setup_ssl_behavior():
         except Exception:
             pass
 
+def fetch_origin_title(orig_sess: requests.Session, obj_url: str, orig_auth, fallback: str = "") -> str:
+    """
+    Tenta buscar o título original do objeto no site antigo usando o mesmo
+    método de metadados já usado para páginas.
+
+    Funciona se o objeto (Folder/File) também expuser o método:
+    <url_do_objeto>/<ORIG_METHOD_META>
+
+    Se não funcionar, devolve o fallback.
+    """
+    try:
+        meta_txt = call_zope_method_text(orig_sess, obj_url, ORIG_METHOD_META, orig_auth)
+        meta = parse_metadados_text(meta_txt)
+        titulo = (meta.get("titulo") or "").strip()
+        if titulo:
+            return titulo
+    except Exception:
+        pass
+
+    return fallback
+
+
 # =========================
 # DESTINO (REST API)
 # =========================
 
 def dest_create_file_json(dest_sess, parent_url: str, file_id: str, filename: str,
-                          blob: bytes, content_type: str, dest_auth) -> bool:
+                          blob: bytes, content_type: str, dest_auth,
+                          title: str = "") -> bool:
     payload = {
         "@type": "File",
         "id": file_id,
-        "title": filename or file_id,
+        "title": title or filename or file_id,
         "file": {
             "data": base64.b64encode(blob).decode("ascii"),
             "encoding": "base64",
@@ -160,6 +183,7 @@ def dest_create_file_json(dest_sess, parent_url: str, file_id: str, filename: st
 
     raise RuntimeError(f"POST {parent_url} (File id={file_id}) -> {r.status_code} {r.text}")
 
+
 def dest_get_type(dest_sess, url: str, dest_auth):
     r = dest_sess.get(
         url.rstrip("/"),
@@ -174,15 +198,45 @@ def dest_get_type(dest_sess, url: str, dest_auth):
     data = r.json()
     return data.get("@type")
 
+def normalize_url(u: str) -> str:
+    return (u or "").rstrip("/")
+
 def dest_exists(dest_sess: requests.Session, url: str, dest_auth) -> bool:
-    r = dest_sess.get(
-        url.rstrip("/"),
-        auth=dest_auth,
-        headers={"Accept": "application/json"},
-        timeout=TIMEOUT,
-        verify=SSL_VERIFY,
-    )
-    return r.status_code == 200
+    wanted = normalize_url(url)
+
+    try:
+        r = dest_sess.get(
+            wanted,
+            auth=dest_auth,
+            headers={"Accept": "application/json"},
+            timeout=TIMEOUT,
+            verify=SSL_VERIFY,
+            allow_redirects=True,
+        )
+
+        if r.status_code != 200:
+            return False
+
+        ctype = (r.headers.get("Content-Type") or "").lower()
+        if "application/json" not in ctype:
+            return False
+
+        data = r.json()
+
+        returned_id = normalize_url(data.get("@id", ""))
+        returned_type = data.get("@type")
+
+        if not returned_id or not returned_type:
+            return False
+
+        # só considera existente se o caminho retornado for exatamente o pedido
+        if returned_id != wanted:
+            return False
+
+        return True
+
+    except Exception:
+        return False
 
 def dest_create_folder(dest_sess, parent_url, folder_id, title, dest_auth):
     payload = {"@type": "Folder", "id": folder_id, "title": title or folder_id}
@@ -347,15 +401,25 @@ def parse_metadados_text(txt: str) -> dict:
 # MIGRAÇÃO
 # =========================
 
-def migrate_folder(dest_sess, row: Row, dest_auth):
+def migrate_folder(orig_sess, dest_sess, row: Row, orig_auth, dest_auth):
     ensure_dest_folder_chain(dest_sess, dest_auth, DEST_ROOT_URL, row.url_destino)
 
     if dest_exists(dest_sess, row.url_destino, dest_auth):
         return "exists"
 
     parent_url, folder_id = parent_and_id(row.url_destino)
-    dest_create_folder(dest_sess, parent_url, folder_id, folder_id, dest_auth)
+
+    original_title = fetch_origin_title(
+        orig_sess,
+        row.url_origem,
+        orig_auth,
+        fallback=folder_id,
+    )
+
+    dest_create_folder(dest_sess, parent_url, folder_id, original_title, dest_auth)
     return "created"
+
+
 
 def migrate_pagina(orig_sess, dest_sess, row: Row, orig_auth, dest_auth):
     if dest_exists(dest_sess, row.url_destino, dest_auth):
@@ -409,7 +473,23 @@ def migrate_arquivo(orig_sess, dest_sess, row: Row, orig_auth, dest_auth):
             dest_create_folder(dest_sess, pparent_url, fallback_id, fallback_id, dest_auth)
         parent_url = fallback_url
 
-    created = dest_create_file_json(dest_sess, parent_url, file_id, filename, blob, ctype, dest_auth)
+    original_title = fetch_origin_title(
+        orig_sess,
+        row.url_origem,
+        orig_auth,
+        fallback=filename or file_id,
+    )
+
+    created = dest_create_file_json(
+        dest_sess,
+        parent_url,
+        file_id,
+        filename,
+        blob,
+        ctype,
+        dest_auth,
+        title=original_title,
+    )
     return "created" if created else "exists"
 
 # =========================
@@ -468,7 +548,7 @@ def main():
     for idx, row in enumerate(rows, start=1):
         try:
             if row.tipo == "folder":
-                st = migrate_folder(dest_sess, row, dest_auth)
+                st = migrate_folder(orig_sess, dest_sess, row, orig_auth, dest_auth)
             elif row.tipo in ("pagina", "document", "page"):
                 st = migrate_pagina(orig_sess, dest_sess, row, orig_auth, dest_auth)
             elif row.tipo in ("arquivo", "file"):
